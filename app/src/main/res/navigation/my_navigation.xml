@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.rahal.ui.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_landingPageFragment"
+            app:destination="@id/landingPageFragment" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_landingPageFragment2"
+            app:destination="@id/landingPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/landingPageFragment"
+        android:name="com.example.rahal.ui.LandingPageFragment"
+        android:label="fragment_landing_page"
+        tools:layout="@layout/fragment_landing_page" >
+        <action
+            android:id="@+id/action_landingPageFragment_to_logInFragment"
+            app:destination="@id/logInUserFragment" />
+        <action
+            android:id="@+id/action_landingPageFragment_to_logInBusinessOwnerFragment"
+            app:destination="@id/logInBusinessOwnerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpUserFragment"
+        android:name="com.example.rahal.ui.SignUpUserFragment"
+        android:label="fragment_sign_up_user"
+        tools:layout="@layout/fragment_sign_up_user" >
+        <action
+            android:id="@+id/action_signUpUserFragment_to_logInFragment"
+            app:destination="@id/logInUserFragment" />
+        <action
+            android:id="@+id/action_signUpUserFragment_to_followSignUpUserFragment3"
+            app:destination="@id/followSignUpUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/followSignUpUserFragment"
+        android:name="com.example.rahal.ui.FollowSignUpUserFragment"
+        android:label="fragment_follow_sign_up_user"
+        tools:layout="@layout/fragment_follow_sign_up_user" >
+        <action
+            android:id="@+id/action_followSignUpUserFragment_to_signUpUserFragment2"
+            app:destination="@id/signUpUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logInUserFragment"
+        android:name="com.example.rahal.ui.LogInUserFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in_user" >
+        <action
+            android:id="@+id/action_logInFragment_to_landingPageFragment2"
+            app:destination="@id/landingPageFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_signUpUserFragment"
+            app:destination="@id/signUpUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logInBusinessOwnerFragment"
+        android:name="com.example.rahal.ui.LogInBusinessOwnerFragment"
+        android:label="fragment_log_in_business_owner"
+        tools:layout="@layout/fragment_log_in_business_owner" >
+        <action
+            android:id="@+id/action_logInBusinessOwnerFragment_to_landingPageFragment"
+            app:destination="@id/landingPageFragment" />
+        <action
+            android:id="@+id/action_logInBusinessOwnerFragment_to_signUpBusinessOwnerFragment"
+            app:destination="@id/signUpBusinessOwnerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpBusinessOwnerFragment"
+        android:name="com.example.rahal.ui.SignUpBusinessOwnerFragment"
+        android:label="fragment_sign_up_business_owner"
+        tools:layout="@layout/fragment_sign_up_business_owner" >
+        <action
+            android:id="@+id/action_signUpBusinessOwnerFragment_to_logInBusinessOwnerFragment"
+            app:destination="@id/logInBusinessOwnerFragment" />
+    </fragment>
+</navigation>

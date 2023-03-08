@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.FollowSignUpUserFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/signup_background">
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/signup_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/back_arrow_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/get_started_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Started"
+            android:textColor="#252525"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/image_view"
+            app:layout_constraintStart_toStartOf="@id/image_view"
+            app:layout_constraintTop_toBottomOf="@id/image_view" />
+
+        <TextView
+            android:id="@+id/free_account_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="by creating a free account."
+            android:textColor="#252525"
+            app:layout_constraintEnd_toEndOf="@id/get_started_text_view"
+            app:layout_constraintStart_toStartOf="@id/get_started_text_view"
+            app:layout_constraintTop_toBottomOf="@id/get_started_text_view" />
+
+        <EditText
+            android:id="@+id/phone_number_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/custom_edit_text"
+            android:drawableEnd="@drawable/ic_phone"
+            android:hint="Phone number"
+            android:inputType="phone"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/free_account_text_view" />
+
+        <EditText
+            android:id="@+id/city_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_edit_text"
+            android:drawableEnd="@drawable/ic_location"
+            android:hint="City"
+            android:inputType=""
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="@id/phone_number_edit_text"
+            app:layout_constraintStart_toStartOf="@id/phone_number_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/phone_number_edit_text" />
+
+        <EditText
+            android:id="@+id/date_of_birth_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_edit_text"
+            android:drawableEnd="@drawable/ic_calendar"
+            android:hint="Date of birth"
+            android:inputType="date"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="@id/phone_number_edit_text"
+            app:layout_constraintStart_toStartOf="@id/phone_number_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/city_edit_text" />
+        <!-- Custom drop down menu-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/spinner_constraint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+
+            app:layout_constraintEnd_toEndOf="@id/phone_number_edit_text"
+            app:layout_constraintStart_toStartOf="@id/phone_number_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/date_of_birth_edit_text">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinner_icon"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_arrow_down"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spinner_auto_complete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_edit_text"
+                    android:inputType="none"
+                    android:padding="14dp"
+                    android:text="Gender"
+                    android:textColor="#8F9090" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+
+            app:layout_constraintStart_toStartOf="@id/spinner_constraint"
+            app:layout_constraintEnd_toEndOf="@id/spinner_constraint"
+            app:layout_constraintTop_toBottomOf="@id/spinner_constraint"
+            android:text="By checking the box you agree to our terms and conditions"
+            />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F2A11E"
+            android:src="@drawable/ic_arrow_right"
+            app:tint="@color/white"
+            app:layout_constraintVertical_bias="0.4"
+            app:layout_constraintEnd_toEndOf="@id/spinner_constraint"
+            app:layout_constraintTop_toBottomOf="@id/spinner_constraint"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:id="@+id/already_member_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already a member? "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/floating_button"
+            />
+        <TextView
+            android:id="@+id/log_in_text_veiw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Log In"
+            android:textColor="#E76D24"
+            app:layout_constraintStart_toEndOf="@id/already_member_text_view"
+            app:layout_constraintTop_toTopOf="@id/already_member_text_view"
+            />
+        <TextView
+            android:id="@+id/guest_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue as a guest"
+            android:textColor="#E76D24"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@id/already_member_text_view"
+            app:layout_constraintEnd_toEndOf="@id/log_in_text_veiw"
+            app:layout_constraintTop_toBottomOf="@id/already_member_text_view"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
