@@ -100,9 +100,9 @@
     </fragment>
     <fragment
         android:id="@+id/passwordChangedOrFailedFragment"
-        android:name="com.example.rahal.ui.user.PasswordChangedOrFailedFragment"
+        android:name="com.example.rahal.ui.user.PasswordChangedOrFailedUserFragment"
         android:label="fragment_password_changed_or_failed"
-        tools:layout="@layout/fragment_password_changed_or_failed" >
+        tools:layout="@layout/fragment_password_changed_or_failed_user" >
         <action
             android:id="@+id/action_passwordChangedOrFailedFragment_to_changePasswordUserFragment"
             app:destination="@id/changePasswordUserFragment" />

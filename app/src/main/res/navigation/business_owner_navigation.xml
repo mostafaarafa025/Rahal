@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_logInBusinessOwnerFragment_to_signUpBusinessOwnerFragment"
             app:destination="@id/signUpBusinessOwnerFragment" />
+        <action
+            android:id="@+id/action_logInBusinessOwnerFragment_to_forgetPasswordBusinessOwnerFragment"
+            app:destination="@id/forgetPasswordBusinessOwnerFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpBusinessOwnerFragment"
@@ -22,5 +25,47 @@
         <action
             android:id="@+id/action_signUpBusinessOwnerFragment_to_logInBusinessOwnerFragment"
             app:destination="@id/logInBusinessOwnerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordBusinessOwnerFragment"
+        android:name="com.example.rahal.ForgetPasswordBusinessOwnerFragment"
+        android:label="fragment_forget_password_business_owner"
+        tools:layout="@layout/fragment_forget_password_business_owner" >
+        <action
+            android:id="@+id/action_forgetPasswordBusinessOwnerFragment_to_verificationCodeBusinessOwnerFragment"
+            app:destination="@id/verificationCodeBusinessOwnerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordBusinessOwnerFragment"
+        android:name="com.example.rahal.ChangePasswordBusinessOwnerFragment"
+        android:label="fragment_change_password_business_owner"
+        tools:layout="@layout/fragment_change_password_business_owner" >
+        <action
+            android:id="@+id/action_changePasswordBusinessOwnerFragment_to_passwordChangedOrFailedFragment2"
+            app:destination="@id/passwordChangedOrFailedFragment2" />
+        <action
+            android:id="@+id/action_changePasswordBusinessOwnerFragment_to_verificationCodeBusinessOwnerFragment"
+            app:destination="@id/verificationCodeBusinessOwnerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verificationCodeBusinessOwnerFragment"
+        android:name="com.example.rahal.VerificationCodeBusinessOwnerFragment"
+        android:label="fragment_verification_code_business_owner"
+        tools:layout="@layout/fragment_verification_code_business_owner" >
+        <action
+            android:id="@+id/action_verificationCodeBusinessOwnerFragment_to_changePasswordBusinessOwnerFragment"
+            app:destination="@id/changePasswordBusinessOwnerFragment" />
+        <action
+            android:id="@+id/action_verificationCodeBusinessOwnerFragment_to_forgetPasswordBusinessOwnerFragment"
+            app:destination="@id/forgetPasswordBusinessOwnerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordChangedOrFailedFragment2"
+        android:name="com.example.rahal.PasswordChangedOrFailedFragment"
+        android:label="fragment_password_changed_or_failed2"
+        tools:layout="@layout/fragment_password_changed_or_failed_business_owner" >
+        <action
+            android:id="@+id/action_passwordChangedOrFailedFragment2_to_changePasswordBusinessOwnerFragment"
+            app:destination="@id/changePasswordBusinessOwnerFragment" />
     </fragment>
 </navigation>
