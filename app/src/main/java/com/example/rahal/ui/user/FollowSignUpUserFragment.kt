@@ -1,4 +1,4 @@
-package com.example.rahal.ui
+package com.example.rahal.ui.user
 
 import android.app.DatePickerDialog
 import android.os.Bundle

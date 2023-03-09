@@ -25,13 +25,10 @@
         <action
             android:id="@+id/action_landingPageFragment_to_logInFragment"
             app:destination="@id/logInUserFragment" />
-        <action
-            android:id="@+id/action_landingPageFragment_to_logInBusinessOwnerFragment"
-            app:destination="@id/logInBusinessOwnerFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpUserFragment"
-        android:name="com.example.rahal.ui.SignUpUserFragment"
+        android:name="com.example.rahal.ui.user.SignUpUserFragment"
         android:label="fragment_sign_up_user"
         tools:layout="@layout/fragment_sign_up_user" >
         <action
@@ -43,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/followSignUpUserFragment"
-        android:name="com.example.rahal.ui.FollowSignUpUserFragment"
+        android:name="com.example.rahal.ui.user.FollowSignUpUserFragment"
         android:label="fragment_follow_sign_up_user"
         tools:layout="@layout/fragment_follow_sign_up_user" >
         <action
@@ -52,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/logInUserFragment"
-        android:name="com.example.rahal.ui.LogInUserFragment"
+        android:name="com.example.rahal.ui.user.LogInUserFragment"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in_user" >
         <action
@@ -61,26 +58,53 @@
         <action
             android:id="@+id/action_logInFragment_to_signUpUserFragment"
             app:destination="@id/signUpUserFragment" />
+        <action
+            android:id="@+id/action_logInUserFragment_to_forgetPasswordUserFragment"
+            app:destination="@id/forgetPasswordUserFragment" />
     </fragment>
     <fragment
-        android:id="@+id/logInBusinessOwnerFragment"
-        android:name="com.example.rahal.ui.LogInBusinessOwnerFragment"
-        android:label="fragment_log_in_business_owner"
-        tools:layout="@layout/fragment_log_in_business_owner" >
+        android:id="@+id/forgetPasswordUserFragment"
+        android:name="com.example.rahal.ui.user.ForgetPasswordUserFragment"
+        android:label="fragment_forget_password_user"
+        tools:layout="@layout/fragment_forget_password_user" >
         <action
-            android:id="@+id/action_logInBusinessOwnerFragment_to_landingPageFragment"
-            app:destination="@id/landingPageFragment" />
+            android:id="@+id/action_forgetPasswordUserFragment_to_logInUserFragment"
+            app:destination="@id/logInUserFragment" />
         <action
-            android:id="@+id/action_logInBusinessOwnerFragment_to_signUpBusinessOwnerFragment"
-            app:destination="@id/signUpBusinessOwnerFragment" />
+            android:id="@+id/action_forgetPasswordUserFragment_to_verificationCodeFragment"
+            app:destination="@id/verificationCodeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/signUpBusinessOwnerFragment"
-        android:name="com.example.rahal.ui.SignUpBusinessOwnerFragment"
-        android:label="fragment_sign_up_business_owner"
-        tools:layout="@layout/fragment_sign_up_business_owner" >
+        android:id="@+id/verificationCodeFragment"
+        android:name="com.example.rahal.ui.user.VerificationCodeFragment"
+        android:label="fragment_verification_code"
+        tools:layout="@layout/fragment_verification_code_user" >
         <action
-            android:id="@+id/action_signUpBusinessOwnerFragment_to_logInBusinessOwnerFragment"
-            app:destination="@id/logInBusinessOwnerFragment" />
+            android:id="@+id/action_verificationCodeFragment_to_forgetPasswordUserFragment"
+            app:destination="@id/forgetPasswordUserFragment" />
+        <action
+            android:id="@+id/action_verificationCodeFragment_to_changePasswordUserFragment"
+            app:destination="@id/changePasswordUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordUserFragment"
+        android:name="com.example.rahal.ui.user.ChangePasswordUserFragment"
+        android:label="fragment_change_password_user"
+        tools:layout="@layout/fragment_change_password_user" >
+        <action
+            android:id="@+id/action_changePasswordUserFragment_to_passwordChangedOrFailedFragment"
+            app:destination="@id/passwordChangedOrFailedFragment" />
+        <action
+            android:id="@+id/action_changePasswordUserFragment_to_verificationCodeFragment"
+            app:destination="@id/verificationCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordChangedOrFailedFragment"
+        android:name="com.example.rahal.ui.user.PasswordChangedOrFailedFragment"
+        android:label="fragment_password_changed_or_failed"
+        tools:layout="@layout/fragment_password_changed_or_failed" >
+        <action
+            android:id="@+id/action_passwordChangedOrFailedFragment_to_changePasswordUserFragment"
+            app:destination="@id/changePasswordUserFragment" />
     </fragment>
 </navigation>
