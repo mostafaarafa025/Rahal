@@ -53,24 +53,35 @@
             />
         <EditText
             android:id="@+id/full_name_edit_text"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginStart="32dp"
-             android:layout_marginEnd="32dp"
-             android:layout_marginTop="24dp"
-             android:inputType="textPersonName"
-             android:hint="Full Name"
-             android:padding="12dp"
-             android:background="@drawable/custom_edit_text"
-             android:drawableEnd="@drawable/ic_full_name"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintTop_toBottomOf="@id/free_account_text_view"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/custom_edit_text"
+            android:drawableEnd="@drawable/ic_full_name"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/free_account_text_view" />
+        <TextView
+            android:id="@+id/error_message_full_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/full_name_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/full_name_edit_text"
+            tools:text="Name is required"
+            />
         <EditText
             android:id="@+id/valid_email_edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:inputType="textEmailAddress"
             android:hint="Valid email"
             android:padding="12dp"
@@ -79,11 +90,21 @@
             app:layout_constraintStart_toStartOf="@id/full_name_edit_text"
             app:layout_constraintEnd_toEndOf="@id/full_name_edit_text"
             app:layout_constraintTop_toBottomOf="@id/full_name_edit_text"/>
+        <TextView
+            android:id="@+id/error_message_valid_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/valid_email_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/valid_email_edit_text"
+            tools:text="Name is required"
+            />
         <EditText
             android:id="@+id/password_edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:inputType="textPassword"
             android:hint="Password"
             android:padding="12dp"
@@ -92,11 +113,21 @@
             app:layout_constraintStart_toStartOf="@id/full_name_edit_text"
             app:layout_constraintEnd_toEndOf="@id/full_name_edit_text"
             app:layout_constraintTop_toBottomOf="@id/valid_email_edit_text"/>
+        <TextView
+            android:id="@+id/error_message_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/password_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/password_edit_text"
+            tools:text="Name is required"
+            />
         <EditText
             android:id="@+id/verify_password_edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:inputType="textPassword"
             android:hint="Verify Password"
             android:padding="12dp"
@@ -106,6 +137,17 @@
             app:layout_constraintStart_toStartOf="@id/full_name_edit_text"
             app:layout_constraintEnd_toEndOf="@id/full_name_edit_text"
             app:layout_constraintTop_toBottomOf="@id/password_edit_text"/>
+        <TextView
+            android:id="@+id/error_message_verify_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/verify_password_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/verify_password_edit_text"
+            tools:text="Name is required"
+            />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_button"
             android:layout_width="wrap_content"

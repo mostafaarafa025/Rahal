@@ -4,30 +4,40 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnTouchListener
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.DatePicker
+import android.widget.AutoCompleteTextView
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TextView
+import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.Navigation
 import com.example.rahal.R
 import com.example.rahal.databinding.FragmentFollowSignUpUserBinding
-import kotlinx.android.synthetic.main.fragment_follow_sign_up_user.*
 import java.util.Calendar
 
 
 class FollowSignUpUserFragment : Fragment(){
     lateinit var binding: FragmentFollowSignUpUserBinding
-
+    private lateinit var phoneEditText: EditText
+    private lateinit var cityEditText: EditText
+    private lateinit var birthDateEditText: EditText
+    private lateinit var genderFieldEditText: AutoCompleteTextView
+    private lateinit var phoneErrorMessage: TextView
+    private lateinit var cityErrorMessage: TextView
+    private lateinit var birthDateErrorMessage: TextView
+    private lateinit var genderFieldErrorMessage: TextView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentFollowSignUpUserBinding.inflate(inflater,container,false)
+
+        intilaizeVariable()
+
         return binding.root
     }
 
@@ -35,6 +45,10 @@ class FollowSignUpUserFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)// Calendar
            showDatePicker()
            customSpinner()
+           validatePhoneNumber()
+           validateCity()
+           validateBirthDate()
+           //validateGender()
         binding.backArrowButton.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.signUpUserFragment)
         }
@@ -46,30 +60,90 @@ class FollowSignUpUserFragment : Fragment(){
 
     }
 
-    fun showDatePicker(){
+    private fun intilaizeVariable(){
+        phoneEditText = binding.phoneNumberEditText
+        phoneErrorMessage = binding.errorMessagePhoneNumber
+
+        cityEditText = binding.cityEditText
+        cityErrorMessage = binding.errorMessageCity
+
+        birthDateEditText = binding.dateOfBirthEditText
+        birthDateErrorMessage = binding.errorMessageBirthDate
+
+        genderFieldEditText = binding.spinnerAutoComplete
+        genderFieldErrorMessage = binding.errorMessageGender
+    }
+
+    private fun showErrorMessage(editText: EditText, textView: TextView, errorMessage: String){
+        editText.error = errorMessage
+        textView.text = errorMessage
+    }
+
+    private fun showDatePicker(){
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         // to show DatePickerDialoge
-        binding.dateOfBirthEditText.setOnClickListener {
-            val datePickerDialog = DatePickerDialog(it.context,DatePickerDialog.OnDateSetListener{view,myYear,myMonth,myDay ->
-
+        birthDateEditText.setOnClickListener {
+            val datePickerDialog = DatePickerDialog(it.context, { _, myYear, myMonth, myDay ->
                 // set to editText
-                binding.dateOfBirthEditText.setText(""+myDay +"/"+ myMonth +"/" +myYear)
-
+                birthDateEditText.setText("$myDay/$myMonth/$myYear")
             },year,month,day)
-
             // show dialog
             datePickerDialog.show()
         }
     }
 
-    fun customSpinner(){
+    private fun customSpinner(){
         val gender = resources.getStringArray(R.array.gender)
         val arrayAdapter = ArrayAdapter(requireContext(),R.layout.dropdown_item,gender)
-        binding.spinnerAutoComplete.setAdapter(arrayAdapter)
+        genderFieldEditText.setAdapter(arrayAdapter)
     }
+
+    private fun validatePhoneNumber(){
+        phoneEditText.doAfterTextChanged {
+            val errorMessage = "Phone Number is required"
+            if (phoneEditText.text.toString().isEmpty()){
+                showErrorMessage(phoneEditText,phoneErrorMessage,errorMessage)
+            }else {
+                phoneErrorMessage.text = ""
+            }
+        }
+    }
+
+    private fun validateCity(){
+        cityEditText.doAfterTextChanged {
+            val errorMessage = "City is required"
+            if (cityEditText.text.toString().isEmpty()){
+                showErrorMessage(cityEditText,cityErrorMessage,errorMessage)
+            }else {
+                cityErrorMessage.text = ""
+            }
+        }
+    }
+
+    private fun validateBirthDate(){
+        birthDateEditText.doAfterTextChanged {
+            val errorMessage = "Birth Date is required"
+            if (birthDateEditText.text.toString().isEmpty()){
+                showErrorMessage(birthDateEditText,birthDateErrorMessage,errorMessage)
+            }else {
+                birthDateErrorMessage.text = ""
+            }
+        }
+    }
+
+//    private fun validateGender(){
+//        genderFieldEditText.doAfterTextChanged {
+//            val errorMessage = "Gender is required"
+//            if (genderFieldEditText.text.toString().isEmpty()){
+//                showErrorMessage(genderFieldEditText,genderFieldErrorMessage,errorMessage)
+//            }else {
+//                genderFieldErrorMessage.text = ""
+//            }
+//        }
+//    }
 
 }

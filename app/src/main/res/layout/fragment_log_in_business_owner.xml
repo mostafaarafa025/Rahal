@@ -66,6 +66,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/acess_account_text_view"/>
+        <TextView
+            android:id="@+id/error_message_valid_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/email_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/email_edit_text"
+            tools:text="Name is required"
+            />
         <EditText
             android:id="@+id/password_edit_text"
             android:layout_width="0dp"
@@ -79,11 +89,22 @@
             app:layout_constraintStart_toStartOf="@id/email_edit_text"
             app:layout_constraintEnd_toEndOf="@id/email_edit_text"
             app:layout_constraintTop_toBottomOf="@id/email_edit_text"/>
+        <TextView
+            android:id="@+id/error_message_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/password_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/password_edit_text"
+            tools:text="Name is required"
+            />
         <CheckBox
             android:id="@+id/remeber_me_check_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Remeber me"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@id/password_edit_text"
             app:layout_constraintEnd_toEndOf="@id/password_edit_text"
             app:layout_constraintTop_toBottomOf="@id/password_edit_text"

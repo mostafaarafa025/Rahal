@@ -19,7 +19,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <ImageView
             android:id="@+id/back_arrow_button"
             android:layout_width="wrap_content"
@@ -29,29 +28,26 @@
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/get_started_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get Started"
+            android:text="@string/get_started"
             android:textColor="#252525"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/image_view"
             app:layout_constraintStart_toStartOf="@id/image_view"
             app:layout_constraintTop_toBottomOf="@id/image_view" />
-
         <TextView
             android:id="@+id/free_account_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="by creating a free account."
+            android:text="@string/by_creating_a_free_account"
             android:textColor="#252525"
             app:layout_constraintEnd_toEndOf="@id/get_started_text_view"
             app:layout_constraintStart_toStartOf="@id/get_started_text_view"
             app:layout_constraintTop_toBottomOf="@id/get_started_text_view" />
-
         <EditText
             android:id="@+id/phone_number_edit_text"
             android:layout_width="match_parent"
@@ -67,12 +63,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/free_account_text_view" />
-
+        <TextView
+            android:id="@+id/error_message_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/phone_number_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/phone_number_edit_text"
+            tools:text="Name is required"
+            />
         <EditText
             android:id="@+id/city_edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/custom_edit_text"
             android:drawableEnd="@drawable/ic_location"
             android:hint="City"
@@ -81,12 +86,21 @@
             app:layout_constraintEnd_toEndOf="@id/phone_number_edit_text"
             app:layout_constraintStart_toStartOf="@id/phone_number_edit_text"
             app:layout_constraintTop_toBottomOf="@id/phone_number_edit_text" />
-
+        <TextView
+            android:id="@+id/error_message_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/city_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/city_edit_text"
+            tools:text="Name is required"
+            />
         <EditText
             android:id="@+id/date_of_birth_edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/custom_edit_text"
             android:drawableEnd="@drawable/ic_calendar"
             android:hint="Date of birth"
@@ -95,13 +109,22 @@
             app:layout_constraintEnd_toEndOf="@id/phone_number_edit_text"
             app:layout_constraintStart_toStartOf="@id/phone_number_edit_text"
             app:layout_constraintTop_toBottomOf="@id/city_edit_text" />
+        <TextView
+            android:id="@+id/error_message_birth_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/date_of_birth_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/date_of_birth_edit_text"
+            tools:text="Name is required"
+            />
         <!-- Custom drop down menu-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/spinner_constraint"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="@id/phone_number_edit_text"
             app:layout_constraintStart_toStartOf="@id/phone_number_edit_text"
             app:layout_constraintTop_toBottomOf="@id/date_of_birth_edit_text">
@@ -128,13 +151,22 @@
                     android:textColor="#8F9090" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/error_message_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/spinner_constraint"
+            app:layout_constraintTop_toBottomOf="@id/spinner_constraint"
+            tools:text="Name is required"
+            />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@id/spinner_constraint"
             app:layout_constraintEnd_toEndOf="@id/spinner_constraint"
             app:layout_constraintTop_toBottomOf="@id/spinner_constraint"
@@ -147,7 +179,7 @@
             android:backgroundTint="#F2A11E"
             android:src="@drawable/ic_arrow_right"
             app:tint="@color/white"
-            app:layout_constraintVertical_bias="0.4"
+            app:layout_constraintVertical_bias="0.5"
             app:layout_constraintEnd_toEndOf="@id/spinner_constraint"
             app:layout_constraintTop_toBottomOf="@id/spinner_constraint"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -175,7 +207,7 @@
             android:layout_height="wrap_content"
             android:text="Continue as a guest"
             android:textColor="#E76D24"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="@id/already_member_text_view"
             app:layout_constraintEnd_toEndOf="@id/log_in_text_veiw"
             app:layout_constraintTop_toBottomOf="@id/already_member_text_view"

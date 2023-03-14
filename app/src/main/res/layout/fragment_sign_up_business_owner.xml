@@ -66,11 +66,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/free_account_text_view"/>
+        <TextView
+            android:id="@+id/error_message_valid_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/valid_email_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/valid_email_edit_text"
+            tools:text="Name is required"
+            />
         <EditText
             android:id="@+id/phone_number_edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:inputType="phone"
             android:hint="Phone number"
             android:padding="12dp"
@@ -79,11 +89,21 @@
             app:layout_constraintStart_toStartOf="@id/valid_email_edit_text"
             app:layout_constraintEnd_toEndOf="@id/valid_email_edit_text"
             app:layout_constraintTop_toBottomOf="@id/valid_email_edit_text"/>
+        <TextView
+            android:id="@+id/error_message_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/phone_number_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/phone_number_edit_text"
+            tools:text="Name is required"
+            />
         <EditText
             android:id="@+id/password_edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:inputType="textPassword"
             android:hint="Password"
             android:padding="12dp"
@@ -92,11 +112,21 @@
             app:layout_constraintStart_toStartOf="@id/valid_email_edit_text"
             app:layout_constraintEnd_toEndOf="@id/valid_email_edit_text"
             app:layout_constraintTop_toBottomOf="@id/phone_number_edit_text"/>
+        <TextView
+            android:id="@+id/error_message_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/password_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/password_edit_text"
+            tools:text="Name is required"
+            />
         <EditText
             android:id="@+id/verify_password_edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:inputType="textPassword"
             android:hint="Verify Password"
             android:padding="12dp"
@@ -106,11 +136,21 @@
             app:layout_constraintStart_toStartOf="@id/valid_email_edit_text"
             app:layout_constraintEnd_toEndOf="@id/valid_email_edit_text"
             app:layout_constraintTop_toBottomOf="@id/password_edit_text"/>
+        <TextView
+            android:id="@+id/error_message_password_verify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@id/verify_password_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/verify_password_edit_text"
+            tools:text="Name is required"
+            />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@id/verify_password_edit_text"
             app:layout_constraintEnd_toEndOf="@id/verify_password_edit_text"
             app:layout_constraintTop_toBottomOf="@id/verify_password_edit_text"

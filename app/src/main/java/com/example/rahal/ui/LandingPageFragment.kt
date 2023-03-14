@@ -1,5 +1,7 @@
 package com.example.rahal.ui
 
+
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +10,8 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.rahal.R
 import com.example.rahal.databinding.FragmentLandingPageBinding
+import com.example.rahal.ui.busniessowner.LogInBusinessOwnerFragment
+import com.example.rahal.ui.busniessowner.MainActivityBusniessOwner
 
 
 class LandingPageFragment : Fragment() {
@@ -16,7 +20,7 @@ class LandingPageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentLandingPageBinding.inflate(inflater,container,false)
         return binding.root
@@ -29,8 +33,10 @@ class LandingPageFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.logInUserFragment)
         }
 
-        binding.bussinessOwnerButton.setOnClickListener { 
-            Navigation.findNavController(view).navigate(R.id.logInBusinessOwnerFragment)
+        binding.bussinessOwnerButton.setOnClickListener {
+            startActivity(Intent(activity,MainActivityBusniessOwner::class.java))
+
+            //Navigation.findNavController(view).navigate(R.id.logInBusinessOwnerFragment)
         }
     }
 

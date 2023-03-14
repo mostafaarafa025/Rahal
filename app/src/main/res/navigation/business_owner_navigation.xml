@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgetPasswordBusinessOwnerFragment"
-        android:name="com.example.rahal.ForgetPasswordBusinessOwnerFragment"
+        android:name="com.example.rahal.ui.busniessowner.ForgetPasswordBusinessOwnerFragment"
         android:label="fragment_forget_password_business_owner"
         tools:layout="@layout/fragment_forget_password_business_owner" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/changePasswordBusinessOwnerFragment"
-        android:name="com.example.rahal.ChangePasswordBusinessOwnerFragment"
+        android:name="com.example.rahal.ui.busniessowner.ChangePasswordBusinessOwnerFragment"
         android:label="fragment_change_password_business_owner"
         tools:layout="@layout/fragment_change_password_business_owner" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/verificationCodeBusinessOwnerFragment"
-        android:name="com.example.rahal.VerificationCodeBusinessOwnerFragment"
+        android:name="com.example.rahal.ui.busniessowner.VerificationCodeBusinessOwnerFragment"
         android:label="fragment_verification_code_business_owner"
         tools:layout="@layout/fragment_verification_code_business_owner" >
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/passwordChangedOrFailedFragment2"
-        android:name="com.example.rahal.PasswordChangedOrFailedFragment"
+        android:name="com.example.rahal.ui.busniessowner.PasswordChangedOrFailedFragment"
         android:label="fragment_password_changed_or_failed2"
         tools:layout="@layout/fragment_password_changed_or_failed_business_owner" >
         <action
