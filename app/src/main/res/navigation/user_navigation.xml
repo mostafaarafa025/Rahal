@@ -62,16 +62,22 @@
         tools:layout="@layout/fragment_forget_password_user" >
         <action
             android:id="@+id/action_forgetPasswordUserFragment_to_verificationCodeFragment"
-            app:destination="@id/verificationCodeFragment" />
+            app:destination="@id/verificationCodeUserFragment" />
+        <action
+            android:id="@+id/action_forgetPasswordUserFragment_to_logInUserFragment"
+            app:destination="@id/logInUserFragment" />
     </fragment>
     <fragment
-        android:id="@+id/verificationCodeFragment"
-        android:name="com.example.rahal.ui.user.VerificationCodeFragment"
+        android:id="@+id/verificationCodeUserFragment"
+        android:name="com.example.rahal.ui.user.VerificationCodeUserFragment"
         android:label="fragment_verification_code"
         tools:layout="@layout/fragment_verification_code_user" >
         <action
             android:id="@+id/action_verificationCodeFragment_to_changePasswordUserFragment"
             app:destination="@id/changePasswordUserFragment" />
+        <action
+            android:id="@+id/action_verificationCodeFragment_to_forgetPasswordUserFragment"
+            app:destination="@id/forgetPasswordUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordUserFragment"
@@ -80,10 +86,13 @@
         tools:layout="@layout/fragment_change_password_user" >
         <action
             android:id="@+id/action_changePasswordUserFragment_to_passwordChangedOrFailedFragment"
-            app:destination="@id/passwordChangedOrFailedFragment" />
+            app:destination="@id/passwordChangedOrFailedUserFragment" />
+        <action
+            android:id="@+id/action_changePasswordUserFragment_to_verificationCodeFragment"
+            app:destination="@id/verificationCodeUserFragment" />
     </fragment>
     <fragment
-        android:id="@+id/passwordChangedOrFailedFragment"
+        android:id="@+id/passwordChangedOrFailedUserFragment"
         android:name="com.example.rahal.ui.user.PasswordChangedOrFailedUserFragment"
         android:label="fragment_password_changed_or_failed"
         tools:layout="@layout/fragment_password_changed_or_failed_user" />

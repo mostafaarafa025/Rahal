@@ -42,7 +42,7 @@
         tools:layout="@layout/fragment_change_password_business_owner" >
         <action
             android:id="@+id/action_changePasswordBusinessOwnerFragment_to_passwordChangedOrFailedFragment2"
-            app:destination="@id/passwordChangedOrFailedFragment2" />
+            app:destination="@id/passwordChangedOrFailedBusinessOwnerFragment" />
         <action
             android:id="@+id/action_changePasswordBusinessOwnerFragment_to_verificationCodeBusinessOwnerFragment"
             app:destination="@id/verificationCodeBusinessOwnerFragment" />
@@ -60,8 +60,8 @@
             app:destination="@id/forgetPasswordBusinessOwnerFragment" />
     </fragment>
     <fragment
-        android:id="@+id/passwordChangedOrFailedFragment2"
-        android:name="com.example.rahal.ui.busniessowner.PasswordChangedOrFailedFragment"
+        android:id="@+id/passwordChangedOrFailedBusinessOwnerFragment"
+        android:name="com.example.rahal.ui.busniessowner.PasswordChangedOrFailedBusinessOwnerFragment"
         android:label="fragment_password_changed_or_failed2"
         tools:layout="@layout/fragment_password_changed_or_failed_business_owner" >
         <action

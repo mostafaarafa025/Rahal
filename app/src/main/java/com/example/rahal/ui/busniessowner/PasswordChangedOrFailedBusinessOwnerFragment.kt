@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.rahal.R
 import com.example.rahal.databinding.FragmentPasswordChangedOrFailedBusinessOwnerBinding
 
-class PasswordChangedOrFailedFragment : Fragment() {
+class PasswordChangedOrFailedBusinessOwnerFragment : Fragment() {
     lateinit var binding: FragmentPasswordChangedOrFailedBusinessOwnerBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

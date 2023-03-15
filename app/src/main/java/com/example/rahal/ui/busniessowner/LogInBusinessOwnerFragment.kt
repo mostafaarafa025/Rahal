@@ -46,6 +46,10 @@ class LogInBusinessOwnerFragment : Fragment() {
         binding.registerNowTextVeiw.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.signUpBusinessOwnerFragment)
         }
+
+        binding.forgetPasswordTextView.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.forgetPasswordBusinessOwnerFragment)
+        }
     }
 
     private fun initializeVariables(){
