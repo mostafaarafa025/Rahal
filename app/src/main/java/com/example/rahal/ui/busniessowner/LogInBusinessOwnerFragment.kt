@@ -1,6 +1,7 @@
 package com.example.rahal.ui.busniessowner
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,10 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.Navigation
-import com.example.rahal.R
+import com.example.rahal.*
 import com.example.rahal.databinding.FragmentLogInBusinessOwnerBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class LogInBusinessOwnerFragment : Fragment() {
@@ -50,6 +55,35 @@ class LogInBusinessOwnerFragment : Fragment() {
         binding.forgetPasswordTextView.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.forgetPasswordBusinessOwnerFragment)
         }
+
+        binding.floatingButton.setOnClickListener {
+            login()
+        }
+    }
+
+    private fun login() {
+        val request = UserRequest()
+        request.email = emailEditText.text.toString().trim()
+        request.password = passwordEditText.text.toString().trim()
+
+        val retrofit = Retrofit().getRetrofitClientInstance().create(UserApi::class.java)
+        retrofit.login(request).enqueue(object: Callback<UserResponse>{
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                val user = response.body()
+                if (response.code() == 201 && user?.data?.user?.role.toString() == "business_owner" ) {
+                    Log.e("sucess", user?.token.toString())
+                    Log.e("sucess", user?.data?.user?.role.toString())
+                    Toast.makeText(activity,"login sucess",Toast.LENGTH_LONG).show()
+                }else {
+                    Toast.makeText(activity,"invalid mail or password",Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                Log.e("Error" ,t.message.toString())
+            }
+
+        })
     }
 
     private fun initializeVariables(){

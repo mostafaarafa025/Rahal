@@ -1,18 +1,23 @@
 package com.example.rahal.ui.user
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.example.rahal.R
+import com.example.rahal.*
 import com.example.rahal.databinding.FragmentSignUpUserBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.regex.Pattern
 
 
@@ -55,15 +60,52 @@ class SignUpUserFragment : Fragment() {
         }
 
         binding.floatingButton.setOnClickListener {
-            if (fullNameEditText.text.toString().isNotEmpty() &&
-                validateEmailEditText.text.toString().isNotEmpty() &&
-                passwordEditText.text.toString().isNotEmpty() &&
-                verifyPasswordEditText.text.toString().isNotEmpty() ){
+//            if (fullNameEditText.text.toString().isNotEmpty() &&
+//                validateEmailEditText.text.toString().isNotEmpty() &&
+//                passwordEditText.text.toString().isNotEmpty() &&
+//                verifyPasswordEditText.text.toString().isNotEmpty() ){
+//
+//                Navigation.findNavController(view).navigate(R.id.followSignUpUserFragment)
+//            }
 
-                Navigation.findNavController(view).navigate(R.id.followSignUpUserFragment)
-            }
+            signup()
         }
 
+    }
+
+    private fun signup() {
+        val role = "user"
+        val response = RegisterUserRequest()
+
+        response.fullName = fullNameEditText.text.toString().trim()
+        response.email = validateEmailEditText.text.toString().trim()
+        response.password = passwordEditText.text.toString().trim()
+        response.passwordConfirm = verifyPasswordEditText.text.toString().trim()
+        response.role = role
+
+
+        val retrofit = Retrofit().getRetrofitClientInstance().create(UserApi::class.java)
+        retrofit.signup(response).enqueue(object: Callback<UserResponse>{
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                val user = response.body()
+                if (response.code() == 201) {
+                    Log.e("sucess", user?.token.toString())
+                    Log.e("sucess", user?.data?.user?.name.toString())
+                    Log.e("sucess", user?.data?.user?.email.toString())
+                    Log.e("sucess", user?.data?.user?.password.toString())
+                    Log.e("sucess", user?.data?.user?.role.toString())
+                    Toast.makeText(activity,"Register sucess", Toast.LENGTH_LONG).show()
+
+                }
+            }
+
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                Log.e("Error" ,t.message.toString())
+                Toast.makeText(activity,"Register Failed",Toast.LENGTH_LONG).show()
+
+            }
+
+        })
     }
 
     private fun initializeVariables(){

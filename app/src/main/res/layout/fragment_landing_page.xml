@@ -71,7 +71,6 @@
             app:strokeColor="#E76D24"
             app:strokeWidth="2dp" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
