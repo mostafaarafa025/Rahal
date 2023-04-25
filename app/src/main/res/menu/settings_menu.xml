@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:title="Edit profile"
+            android:iconTint="@color/orange"
+            android:icon="@drawable/ic_edit_profile"
+            android:id="@+id/profileFragment" />
+
+        <item android:title="Change password"
+            android:icon="@drawable/ic_password"
+            android:iconTint="@color/orange"
+            android:id="@+id/changePasswordUserFragment"/>
+
+        <item
+            android:iconTint="@color/orange"
+            android:icon="@drawable/ic_logout"
+            android:title="Logout" />
+    </group>
+</menu>

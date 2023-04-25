@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.YourPlansFragment">
+
+    <ImageView
+        android:id="@+id/background_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/backgroundemptyscreen"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+    <TextView
+        android:id="@+id/created_plans_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No created plans yet!"
+        android:textSize="16sp"
+        android:letterSpacing="0.15"
+        android:textColor="#F2A11E"
+        app:layout_constraintStart_toStartOf="@id/background_image_view"
+        app:layout_constraintEnd_toEndOf="@id/background_image_view"
+        app:layout_constraintTop_toBottomOf="@id/background_image_view"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="create your own plan by pressing on create your plan button"
+        android:textSize="14sp"
+        android:textColor="#AFADAD"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/created_plans_text_view"
+        app:layout_constraintEnd_toEndOf="@id/created_plans_text_view"
+        app:layout_constraintTop_toBottomOf="@id/created_plans_text_view"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/create_plan_button">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/create_plan_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Create Your Plan"
+        android:layout_margin="24dp"
+        android:background="@drawable/custom_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

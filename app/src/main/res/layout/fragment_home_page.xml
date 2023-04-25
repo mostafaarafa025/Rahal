@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".HomePageFragment">
+
+        <ImageView
+            android:id="@+id/location_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/city_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_arrow_down"
+            android:text="City"
+            android:textColor="#8F9090"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/location_ic"
+            app:layout_constraintStart_toEndOf="@id/location_ic"
+            app:layout_constraintTop_toTopOf="@id/location_ic" />
+
+        <ImageView
+            android:id="@+id/help_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_help"
+            app:layout_constraintBottom_toBottomOf="@id/city_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/location_ic" />
+
+        <SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/custom_edit_text"
+            android:backgroundTint="#F3EFEF"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@android:color/transparent"
+            android:queryHint="Search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/city_text_view" />
+
+        <TextView
+            android:id="@+id/recommended_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="serif"
+            android:text="Recommended"
+            android:textColor="#8F9090"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/search_bar"
+            app:layout_constraintTop_toBottomOf="@id/search_bar" />
+
+        <TextView
+            android:id="@+id/on_recent_view_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" on recent views"
+            android:fontFamily="serif"
+            android:textSize="16sp"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintBottom_toBottomOf="@id/recommended_text_view"
+            app:layout_constraintStart_toEndOf="@id/recommended_text_view" />
+
+        <TextView
+            android:id="@+id/recommended_view_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View all"
+            android:layout_marginEnd="16dp"
+            android:textSize="10sp"
+            android:textColor="@color/orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/on_recent_view_text_view"
+            app:layout_constraintTop_toTopOf="@id/on_recent_view_text_view"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommended_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@id/recommended_text_view"
+            app:layout_constraintTop_toBottomOf="@id/recommended_text_view"
+            tools:listitem="@layout/custom_rectangle_item_for_recylcer_view_home_page" />
+
+        <TextView
+            android:id="@+id/top_rated_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:text="Top rated places"
+            android:layout_marginTop="8dp"
+            android:textColor="#8F9090"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/recommended_text_view"
+            app:layout_constraintTop_toBottomOf="@id/recommended_recycler_view" />
+
+        <TextView
+            android:id="@+id/top_rated_view_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View all"
+            android:layout_marginEnd="16dp"
+            android:textSize="10sp"
+            android:textColor="@color/orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/top_rated_text_view"
+            app:layout_constraintTop_toTopOf="@id/top_rated_text_view"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/top_rated_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@id/recommended_text_view"
+            app:layout_constraintTop_toBottomOf="@id/top_rated_text_view"
+            tools:listitem="@layout/custom_rectangle_item_for_recylcer_view_home_page" />
+
+        <TextView
+            android:id="@+id/activities_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:text="Activities"
+            android:textColor="#8F9090"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@id/recommended_text_view"
+            app:layout_constraintTop_toBottomOf="@id/top_rated_recycler_view" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/favorite_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="@id/recommended_text_view"
+            app:layout_constraintTop_toBottomOf="@id/activities_text_view"
+            tools:listitem="@layout/custom_circular_item_for_recycler_view" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

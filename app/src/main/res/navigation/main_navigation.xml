@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/viewPlaceFragment">
+
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.rahal.ui.home.HomePageFragment"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePageFragment_to_FAQFragment"
+            app:destination="@id/FAQFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_viewAllActivitesFragment"
+            app:destination="@id/viewAllActivitesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/plansFragment"
+        android:name="com.example.rahal.ui.home.PlansFragment"
+        android:label="fragment_plans"
+        tools:layout="@layout/fragment_plans" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.rahal.ui.home.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.rahal.ui.home.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/FAQFragment"
+        android:name="com.example.rahal.ui.home.faq.FAQFragment"
+        android:label="fragment_faq"
+        tools:layout="@layout/fragment_faq" >
+        <action
+            android:id="@+id/action_FAQFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/yourPlansFragment"
+        android:name="com.example.rahal.ui.home.YourPlansFragment"
+        android:label="fragment_your_plans"
+        tools:layout="@layout/fragment_your_plans" >
+        <action
+            android:id="@+id/action_yourPlansFragment_to_planFragment2"
+            app:destination="@id/planFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recommendedPlansFragment"
+        android:name="com.example.rahal.ui.home.RecommendedPlansFragment"
+        android:label="fragment_recommended_plans"
+        tools:layout="@layout/fragment_recommended_plans" >
+        <action
+            android:id="@+id/action_recommendedPlansFragment_to_planFragment2"
+            app:destination="@id/planFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewAllActivitesFragment"
+        android:name="com.example.rahal.ui.home.ViewAllActivitiesFragment"
+        android:label="fragment_view_all_activites"
+        tools:layout="@layout/fragment_view_all_activites" >
+        <action
+            android:id="@+id/action_viewAllActivitesFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.example.rahal.ui.home.ReviewFragment"
+        android:label="fragment_review"
+        tools:layout="@layout/fragment_review" >
+        <action
+            android:id="@+id/action_reviewFragment_to_viewPlaceFragment"
+            app:destination="@id/viewPlaceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPlaceFragment"
+        android:name="com.example.rahal.ui.home.ViewPlaceFragment"
+        android:label="fragment_view_place"
+        tools:layout="@layout/fragment_view_place" >
+        <action
+            android:id="@+id/action_viewPlaceFragment_to_reviewFragment"
+            app:destination="@id/reviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/planFragment"
+        android:name="com.example.rahal.ui.home.PlanFragment"
+        android:label="fragment_plan"
+        tools:layout="@layout/fragment_plan" />
+</navigation>
