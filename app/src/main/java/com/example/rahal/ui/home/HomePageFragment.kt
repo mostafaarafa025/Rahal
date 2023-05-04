@@ -13,6 +13,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.rahal.R
 import com.example.rahal.adapters.RecommendedTopRatedAdapter
+import com.example.rahal.databinding.CustomRectangleItemForRecylerViewBinding
 import com.example.rahal.databinding.FragmentHomePageBinding
 import com.example.rahal.remove.Circle
 import com.example.rahal.remove.CircleAdapter
@@ -50,6 +51,9 @@ class HomePageFragment : Fragment() {
         getTopRated()
         onPlaceRecommendedClick()
         onPlaceTopRatedClick()
+        onFavoritesIconClick()
+
+
 
 
         val circle1= Circle(1,R.drawable.museums,"musuems")
@@ -125,6 +129,15 @@ class HomePageFragment : Fragment() {
         findNavController().navigate(R.id.action_homePageFragment_to_viewAllActivitesFragment,bundle)
     }
 
+    private fun onFavoritesIconClick(){
+        recommendedAdapter.onFavoritesIconClick = { data ->
+                viewModel.upsert(data)
+        }
+        topRatedAdapter.onFavoritesIconClick = { data ->
+            viewModel.upsert(data)
+        }
+    }
+
     private fun onPlaceRecommendedClick(){
         recommendedAdapter.onPlaceItemClick = { data ->
             val fragment = ViewPlaceFragment()
@@ -134,7 +147,7 @@ class HomePageFragment : Fragment() {
             bundle.putString("title",data.name)
             bundle.putString("reviews",data.num_reviews.toString())
             bundle.putString("description",data.description)
-            bundle.putString("location",data.location.address)
+            //bundle.putString("location",data.location.address)
             fragment.arguments = bundle
             findNavController().navigate(R.id.action_homePageFragment_to_viewPlaceFragment,bundle)
         }
@@ -149,7 +162,7 @@ class HomePageFragment : Fragment() {
             bundle.putString("title",data.name)
             bundle.putString("reviews",data.num_reviews.toString())
             bundle.putString("description",data.description)
-            bundle.putString("location",data.location.address)
+            //bundle.putString("location",data.location.address)
             fragment.arguments = bundle
             findNavController().navigate(R.id.action_homePageFragment_to_viewPlaceFragment,bundle)
         }

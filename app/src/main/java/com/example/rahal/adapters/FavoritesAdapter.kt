@@ -8,35 +8,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rahal.R
 import com.example.rahal.data.Place
-import com.example.rahal.databinding.CustomRectangleItemForRecylcerViewHomePageBinding
-import com.example.rahal.repositories.Repository
-import com.example.rahal.viewModels.ViewModel
+import com.example.rahal.databinding.CustomRectangleItemForRecylerViewBinding
 
-class RecommendedTopRatedAdapter(): RecyclerView.Adapter<RecommendedTopRatedAdapter.viewHolder>() {
-
-    lateinit var onPlaceItemClick: ((Place)  -> Unit )
+class FavoritesAdapter(): RecyclerView.Adapter<FavoritesAdapter.viewHolder>()  {
 
     lateinit var onFavoritesIconClick: ((Place)  -> Unit )
 
-    class viewHolder(val binding: CustomRectangleItemForRecylcerViewHomePageBinding)
-        : RecyclerView.ViewHolder(binding.root) {
-
-    }
-
     private val diffUtil = object : DiffUtil.ItemCallback<Place>(){
         override fun areItemsTheSame(oldItem: Place, newItem: Place): Boolean {
-            return oldItem._id== newItem._id
+            return oldItem._id == newItem._id
         }
 
         override fun areContentsTheSame(oldItem: Place, newItem: Place): Boolean {
             return oldItem == newItem
         }
-
     }
 
     val differ = AsyncListDiffer(this,diffUtil)
+
+    class viewHolder(val binding: CustomRectangleItemForRecylerViewBinding):RecyclerView.ViewHolder(binding.root) {
+
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
-        return viewHolder(CustomRectangleItemForRecylcerViewHomePageBinding
+        return viewHolder(CustomRectangleItemForRecylerViewBinding
             .inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
@@ -44,20 +39,16 @@ class RecommendedTopRatedAdapter(): RecyclerView.Adapter<RecommendedTopRatedAdap
         return differ.currentList.size
     }
 
-
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val data = differ.currentList[position]
         Glide.with(holder.itemView).load(data.image).into(holder.binding.imageViewId)
         holder.binding.rateTextView.text = data.rating.toString()
         holder.binding.placeTextView.text = data.name
 
-        holder.itemView.setOnClickListener {
-            onPlaceItemClick.invoke(data)
-        }
-
         holder.binding.favoriteIcon.setOnClickListener {
             holder.binding.favoriteIcon.setImageResource(R.drawable.ic_favorite)
             onFavoritesIconClick.invoke(data)
         }
+
     }
 }

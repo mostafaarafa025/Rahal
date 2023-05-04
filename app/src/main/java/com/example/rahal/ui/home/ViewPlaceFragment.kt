@@ -7,12 +7,15 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.rahal.R
+import com.example.rahal.data.Place
 import com.example.rahal.databinding.FragmentViewPlaceBinding
 import com.example.rahal.remove.SliderAdapter
 import com.example.rahal.remove.SliderItem
+import com.example.rahal.viewModels.ViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -26,6 +29,8 @@ class ViewPlaceFragment : Fragment() {
     private lateinit var reviews: TextView
     private lateinit var description: TextView
     private lateinit var location: TextView
+
+    private val viewModel: ViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +46,6 @@ class ViewPlaceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         intilaizeVariables()
-        //sliderImage()
         getData()
 
         options.setOnClickListener { showPopupMenu() }
@@ -73,19 +77,6 @@ class ViewPlaceFragment : Fragment() {
         location = binding.location
 
     }
-
-//    private fun sliderImage(){
-//        val sliderItems = listOf(
-//            SliderItem(R.drawable.museums),
-//            SliderItem(R.drawable.papajohnes),
-//            SliderItem(R.drawable.hollybelly),
-//            SliderItem(R.drawable.macdonalds)
-//        )
-//
-//        val sliderAdapter = SliderAdapter(sliderItems, binding.placeImageViewPager)
-//        binding.placeImageViewPager.adapter = sliderAdapter
-//        sliderAdapter.startAutoSlider()
-//    }
 
     fun getData(){
         val data = arguments

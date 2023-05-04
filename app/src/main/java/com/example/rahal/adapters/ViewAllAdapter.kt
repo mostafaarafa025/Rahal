@@ -6,20 +6,19 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.rahal.data.Docuemnt
-import com.example.rahal.databinding.CustomRectangleItemForPlansBinding
+import com.example.rahal.data.Place
 import com.example.rahal.databinding.ViewAllActivitiesItemBinding
 
 class ViewAllAdapter(): RecyclerView.Adapter<ViewAllAdapter.ViewHolder>() {
 
-    lateinit var onPlaceItemClick: ((Docuemnt)  -> Unit )
+    lateinit var onPlaceItemClick: ((Place)  -> Unit )
 
-    private val diffUtil = object : DiffUtil.ItemCallback<Docuemnt>() {
-        override fun areItemsTheSame(oldItem: Docuemnt, newItem: Docuemnt): Boolean {
-            return oldItem.id == newItem.id
+    private val diffUtil = object : DiffUtil.ItemCallback<Place>() {
+        override fun areItemsTheSame(oldItem: Place, newItem: Place): Boolean {
+            return oldItem._id == newItem._id
         }
 
-        override fun areContentsTheSame(oldItem: Docuemnt, newItem: Docuemnt): Boolean {
+        override fun areContentsTheSame(oldItem: Place, newItem: Place): Boolean {
             return oldItem == newItem
         }
 
@@ -45,7 +44,7 @@ class ViewAllAdapter(): RecyclerView.Adapter<ViewAllAdapter.ViewHolder>() {
         holder.binding.placeNameTextView.text = data.name
         holder.binding.rateTextView.text = data.rating.toString()
         holder.binding.starIcon.rating = data.rating.toFloat()
-        holder.binding.locationPlace.text = data.location.address
+        //holder.binding.locationPlace.text = data.location.address
 
         holder.itemView.setOnClickListener {
             onPlaceItemClick.invoke(data)

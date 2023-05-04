@@ -1,6 +1,10 @@
 package com.example.rahal.module
 
+import android.app.Application
+import android.provider.DocumentsContract.Root
+import androidx.room.Room
 import com.example.rahal.api.HomeApi
+import com.example.rahal.database.PlaceDataBase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,4 +27,8 @@ object AppModule {
             .create(HomeApi::class.java)
 
 
+    @Provides
+    @Singleton
+    fun provideDataBase(application: Application): PlaceDataBase =
+        Room.databaseBuilder(application,PlaceDataBase::class.java,"place.database").build()
 }

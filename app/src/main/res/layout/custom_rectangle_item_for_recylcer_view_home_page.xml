@@ -24,7 +24,7 @@
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <ImageView
-
+        android:id="@+id/favorite_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
