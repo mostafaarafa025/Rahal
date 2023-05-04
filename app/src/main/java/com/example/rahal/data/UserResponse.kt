@@ -1,4 +1,4 @@
-package com.example.rahal
+package com.example.rahal.data
 
 import com.google.gson.annotations.SerializedName
 

@@ -15,9 +15,10 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.Navigation
 import com.example.rahal.R
 import com.example.rahal.databinding.FragmentFollowSignUpUserBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
-
+@AndroidEntryPoint
 class FollowSignUpUserFragment : Fragment(){
     lateinit var binding: FragmentFollowSignUpUserBinding
     private lateinit var phoneEditText: EditText

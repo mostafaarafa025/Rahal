@@ -9,8 +9,9 @@ import android.widget.ImageView
 import androidx.navigation.Navigation
 import com.example.rahal.R
 import com.example.rahal.databinding.FragmentReviewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ReviewFragment : Fragment() {
     private lateinit var binding:FragmentReviewBinding
     private lateinit var backArrowButton:ImageView

@@ -14,9 +14,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.rahal.databinding.FragmentProfileBinding
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class ProfileFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var settingButton:ImageButton

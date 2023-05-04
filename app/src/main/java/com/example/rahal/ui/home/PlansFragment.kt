@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.rahal.databinding.FragmentPlansBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class PlansFragment : Fragment() {
     private lateinit var binding: FragmentPlansBinding
     override fun onCreateView(

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/viewPlaceFragment">
+    app:startDestination="@id/homePageFragment">
 
     <fragment
         android:id="@+id/homePageFragment"
@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_viewAllActivitesFragment"
             app:destination="@id/viewAllActivitesFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_viewPlaceFragment"
+            app:destination="@id/viewPlaceFragment" />
     </fragment>
     <fragment
         android:id="@+id/plansFragment"
@@ -67,6 +70,9 @@
         <action
             android:id="@+id/action_viewAllActivitesFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_viewAllActivitesFragment_to_viewPlaceFragment"
+            app:destination="@id/viewPlaceFragment" />
     </fragment>
     <fragment
         android:id="@+id/reviewFragment"
@@ -85,6 +91,12 @@
         <action
             android:id="@+id/action_viewPlaceFragment_to_reviewFragment"
             app:destination="@id/reviewFragment" />
+        <action
+            android:id="@+id/action_viewPlaceFragment_to_viewAllActivitesFragment"
+            app:destination="@id/viewAllActivitesFragment" />
+        <action
+            android:id="@+id/action_viewPlaceFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/planFragment"

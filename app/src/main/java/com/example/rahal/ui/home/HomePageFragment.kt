@@ -7,22 +7,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.rahal.R
+import com.example.rahal.adapters.RecommendedTopRatedAdapter
 import com.example.rahal.databinding.FragmentHomePageBinding
 import com.example.rahal.remove.Circle
 import com.example.rahal.remove.CircleAdapter
-import com.example.rahal.remove.RectangleAdapter
-import com.example.rahal.remove.rectangle
+import com.example.rahal.viewModels.ViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomePageFragment : Fragment() {
     private lateinit var binding: FragmentHomePageBinding
     private lateinit var helpIcon:ImageView
     private lateinit var recommendedViewAll:TextView
     private lateinit var topRatedViewAll:TextView
-    private val myAdapter by lazy { RectangleAdapter() }
+    private val viewModel: ViewModel by viewModels()
+    private lateinit var recommendedAdapter : RecommendedTopRatedAdapter
+    private lateinit var topRatedAdapter: RecommendedTopRatedAdapter
     private val circleAdapter by lazy { CircleAdapter() }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,22 +44,13 @@ class HomePageFragment : Fragment() {
 
         recommendedViewAll = binding.recommendedViewAll
         topRatedViewAll = binding.topRatedViewAll
-
-        binding.recommendedRecyclerView.adapter=myAdapter
-        binding.topRatedRecyclerView.adapter=myAdapter
         binding.favoriteRecyclerView.adapter=circleAdapter
 
-        val rectangle1= rectangle(1,R.drawable.kfc,"kfc","Alexandria,Egypt",4)
-        val rectangle2=rectangle(2,R.drawable.papajohnes,"papajhones","Alexandria,Egypt",5)
-        val rectangle3=rectangle(3,R.drawable.bruxies,"bruxis","cairo,Egypt",2)
-        val rectangle4=rectangle(4,R.drawable.macdonalds,"macdonalds","tanta,Egypt",4)
-        val rectangle5=rectangle(5,R.drawable.cairo,"cairo","portsaid,Egypt",4)
+        getRecommended()
+        getTopRated()
+        onPlaceRecommendedClick()
+        onPlaceTopRatedClick()
 
-        myAdapter.setData(listOf(rectangle1,rectangle2,rectangle3,rectangle4,rectangle5,
-            rectangle1,rectangle2,rectangle3,rectangle4,rectangle5,
-            rectangle1,rectangle2,rectangle3,rectangle4,rectangle5,
-            rectangle1,rectangle2,rectangle3,rectangle4,rectangle5,
-        ))
 
         val circle1= Circle(1,R.drawable.museums,"musuems")
         val circle2=Circle(1,R.drawable.museums,"shopping")
@@ -75,11 +71,88 @@ class HomePageFragment : Fragment() {
         }
 
         recommendedViewAll.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_homePageFragment_to_viewAllActivitesFragment)
+            onViewAllRecommendedClick()
         }
 
         topRatedViewAll.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_homePageFragment_to_viewAllActivitesFragment)
+            onViewAllTopRatedClick()
         }
     }
+
+    private fun setupRecommendedRecyclerView(){
+        recommendedAdapter = RecommendedTopRatedAdapter()
+        binding.recommendedRecyclerView.apply {
+            adapter = recommendedAdapter
+        }
+    }
+
+    private fun setupTopRatedRecyclerView(){
+        topRatedAdapter = RecommendedTopRatedAdapter()
+        binding.topRatedRecyclerView.apply {
+            adapter = topRatedAdapter
+        }
+    }
+
+    private fun getTopRated(){
+        setupTopRatedRecyclerView()
+        viewModel.getTopRated()
+        viewModel.getTopRatedLiveData.observe(viewLifecycleOwner, Observer {
+            topRatedAdapter.differ.submitList(it)
+        })
+    }
+
+    private fun getRecommended(){
+        setupRecommendedRecyclerView()
+        viewModel.getRecommended()
+        viewModel.getRecommendedLiveData.observe(viewLifecycleOwner, Observer {
+            recommendedAdapter.differ.submitList(it)
+        })
+    }
+
+    private fun onViewAllRecommendedClick(){
+        val fragment = ViewAllActivitiesFragment()
+        val bundle = Bundle()
+        bundle.putString("title",binding.recommendedTextView.text.toString())
+        fragment.arguments = bundle
+        findNavController().navigate(R.id.action_homePageFragment_to_viewAllActivitesFragment,bundle)
+    }
+
+    private fun onViewAllTopRatedClick(){
+        val fragment = ViewAllActivitiesFragment()
+        val bundle = Bundle()
+        bundle.putString("title",binding.topRatedTextView.text.toString())
+        fragment.arguments = bundle
+        findNavController().navigate(R.id.action_homePageFragment_to_viewAllActivitesFragment,bundle)
+    }
+
+    private fun onPlaceRecommendedClick(){
+        recommendedAdapter.onPlaceItemClick = { data ->
+            val fragment = ViewPlaceFragment()
+            val bundle = Bundle()
+            bundle.putString("image",data.image)
+            bundle.putDouble("rate",data.rating)
+            bundle.putString("title",data.name)
+            bundle.putString("reviews",data.num_reviews.toString())
+            bundle.putString("description",data.description)
+            bundle.putString("location",data.location.address)
+            fragment.arguments = bundle
+            findNavController().navigate(R.id.action_homePageFragment_to_viewPlaceFragment,bundle)
+        }
+    }
+
+    private fun onPlaceTopRatedClick(){
+        topRatedAdapter.onPlaceItemClick = { data ->
+            val fragment = ViewPlaceFragment()
+            val bundle = Bundle()
+            bundle.putString("image",data.image)
+            bundle.putDouble("rate",data.rating)
+            bundle.putString("title",data.name)
+            bundle.putString("reviews",data.num_reviews.toString())
+            bundle.putString("description",data.description)
+            bundle.putString("location",data.location.address)
+            fragment.arguments = bundle
+            findNavController().navigate(R.id.action_homePageFragment_to_viewPlaceFragment,bundle)
+        }
+    }
+
 }

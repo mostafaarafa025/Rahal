@@ -13,6 +13,9 @@ import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.Navigation
 import com.example.rahal.*
+import com.example.rahal.api.UserApi
+import com.example.rahal.data.RegisterUserRequest
+import com.example.rahal.data.UserResponse
 import com.example.rahal.databinding.FragmentSignUpBusinessOwnerBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call

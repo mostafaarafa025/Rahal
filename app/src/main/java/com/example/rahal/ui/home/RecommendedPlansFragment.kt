@@ -9,8 +9,9 @@ import com.example.rahal.R
 import com.example.rahal.databinding.FragmentRecommendedPlansBinding
 import com.example.rahal.remove.Circle
 import com.example.rahal.remove.PlansAdapter
-import com.example.rahal.remove.RectangleAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecommendedPlansFragment : Fragment() {
     private lateinit var binding: FragmentRecommendedPlansBinding
     private val myAdapter by lazy { PlansAdapter() }

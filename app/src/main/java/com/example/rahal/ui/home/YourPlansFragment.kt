@@ -22,8 +22,9 @@ import com.example.rahal.R
 import com.example.rahal.databinding.FragmentYourPlansBinding
 import com.example.rahal.remove.Circle
 import com.example.rahal.remove.PlansAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class YourPlansFragment : Fragment() {
     private lateinit var binding:FragmentYourPlansBinding
     private lateinit var createPlanButton: Button

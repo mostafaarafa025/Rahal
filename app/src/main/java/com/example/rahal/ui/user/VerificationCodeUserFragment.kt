@@ -16,8 +16,9 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.Navigation
 import com.example.rahal.R
 import com.example.rahal.databinding.FragmentVerificationCodeUserBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class VerificationCodeUserFragment : Fragment(), TextWatcher {
     lateinit var binding: FragmentVerificationCodeUserBinding
     private lateinit var backArrowButton: ImageView

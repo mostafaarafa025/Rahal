@@ -10,8 +10,9 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.rahal.R
 import com.example.rahal.databinding.FragmentSplashScreenBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
     lateinit var binding: FragmentSplashScreenBinding
 

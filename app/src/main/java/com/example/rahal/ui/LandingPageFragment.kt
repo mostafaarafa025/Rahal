@@ -12,8 +12,9 @@ import com.example.rahal.R
 import com.example.rahal.databinding.FragmentLandingPageBinding
 import com.example.rahal.ui.busniessowner.LogInBusinessOwnerFragment
 import com.example.rahal.ui.busniessowner.MainActivityBusniessOwner
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LandingPageFragment : Fragment() {
     lateinit var binding: FragmentLandingPageBinding
 

@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rahal.R
 import com.example.rahal.databinding.FragmentFaqBinding
-import kotlinx.android.synthetic.main.faq_item.*
-import kotlinx.android.synthetic.main.fragment_faq.*
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class FAQFragment : Fragment() {
     private lateinit var binding: FragmentFaqBinding
     private lateinit var recyclerview: RecyclerView

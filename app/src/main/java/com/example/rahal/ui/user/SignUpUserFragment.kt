@@ -14,13 +14,17 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.rahal.*
+import com.example.rahal.api.UserApi
+import com.example.rahal.data.RegisterUserRequest
+import com.example.rahal.data.UserResponse
 import com.example.rahal.databinding.FragmentSignUpUserBinding
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.regex.Pattern
 
-
+@AndroidEntryPoint
 class SignUpUserFragment : Fragment() {
     lateinit var binding: FragmentSignUpUserBinding
     private lateinit var fullNameEditText:EditText
