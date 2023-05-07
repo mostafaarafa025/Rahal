@@ -1,4 +1,4 @@
-package com.example.rahal.ui.home.faq
+package com.example.rahal.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rahal.R
+import com.example.rahal.adapters.FaqAdapter
+import com.example.rahal.data.faq.FaqItem
 import com.example.rahal.databinding.FragmentFaqBinding
 import dagger.hilt.android.AndroidEntryPoint
 

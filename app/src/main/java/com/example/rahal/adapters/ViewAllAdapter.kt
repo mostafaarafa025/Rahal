@@ -44,7 +44,7 @@ class ViewAllAdapter(): RecyclerView.Adapter<ViewAllAdapter.ViewHolder>() {
         holder.binding.placeNameTextView.text = data.name
         holder.binding.rateTextView.text = data.rating.toString()
         holder.binding.starIcon.rating = data.rating.toFloat()
-        //holder.binding.locationPlace.text = data.location.address
+        holder.binding.locationPlace.text = data.location.address
 
         holder.itemView.setOnClickListener {
             onPlaceItemClick.invoke(data)

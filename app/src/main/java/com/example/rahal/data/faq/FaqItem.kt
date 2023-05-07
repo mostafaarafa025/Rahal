@@ -1,4 +1,4 @@
-package com.example.rahal.ui.home.faq
+package com.example.rahal.data.faq
 
 data class FaqItem(
     val title: String,

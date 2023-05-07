@@ -11,7 +11,7 @@ data class Place(
     val description: String,
     //val id: String,
     val image: String,
-    //val location: Location,
+    val location: Location,
     val name: String,
     val num_reviews: Int,
     val rating: Double

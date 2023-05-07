@@ -75,8 +75,11 @@ class ViewAllActivitiesFragment : Fragment() {
             viewModel.getTopRatedLiveData.observe(viewLifecycleOwner, Observer {
                 viewAllAdapter.differ.submitList(it)
             })
-        }else {
-            Log.d("test","nothing")
+        } else {
+            viewModel.getContentOfActivities("alexandria",title.text.toString())
+            viewModel.getContentActivitiesLiveData.observe(viewLifecycleOwner, Observer {
+                viewAllAdapter.differ.submitList(it)
+            })
         }
     }
 
@@ -96,7 +99,8 @@ class ViewAllActivitiesFragment : Fragment() {
             bundle.putString("title",data.name)
             bundle.putString("reviews",data.num_reviews.toString())
             bundle.putString("description",data.description)
-            //bundle.putString("location",data.location.address)
+            bundle.putString("address",data.location.address)
+            bundle.putString("location",data.location.coordiantes.toString())
             fragment.arguments = bundle
             findNavController().navigate(R.id.action_viewAllActivitesFragment_to_viewPlaceFragment,bundle)
         }

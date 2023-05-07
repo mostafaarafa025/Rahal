@@ -1,4 +1,4 @@
-package com.example.rahal
+package com.example.rahal.module
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

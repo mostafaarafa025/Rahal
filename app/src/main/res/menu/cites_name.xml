@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/cairo"
+        android:title="Cairo" />
+
+    <item
+        android:id="@+id/Alexandria"
+        android:title="alexandria" />
+
+    <item
+        android:id="@+id/portSaid"
+        android:title="PortSaid" />
+
+    <item
+        android:id="@+id/Hurghada"
+        android:title="Hurghada" />
+
+    <item
+        android:id="@+id/Dahab"
+        android:title="Dahab" />
+
+</menu>

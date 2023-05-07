@@ -1,6 +1,10 @@
 package com.example.rahal.ui.home
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ImageView
@@ -17,6 +21,8 @@ import com.example.rahal.remove.SliderAdapter
 import com.example.rahal.remove.SliderItem
 import com.example.rahal.viewModels.ViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.regex.Pattern
+import kotlin.math.log
 
 
 @AndroidEntryPoint
@@ -29,6 +35,7 @@ class ViewPlaceFragment : Fragment() {
     private lateinit var reviews: TextView
     private lateinit var description: TextView
     private lateinit var location: TextView
+    lateinit var cordinates:String
 
     private val viewModel: ViewModel by viewModels()
 
@@ -50,6 +57,21 @@ class ViewPlaceFragment : Fragment() {
 
         options.setOnClickListener { showPopupMenu() }
 
+        binding.mapView.setOnClickListener {
+            val pattern = Pattern.compile("\\[(.*),(.*)\\]")
+            val matcher = pattern.matcher(cordinates)
+            if (matcher.find()) {
+                val latitude = matcher.group(1)
+                val longitude = matcher.group(2)
+
+                // Create intent to open Google Maps
+                val intentUri = "geo:$latitude,$longitude"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(intentUri))
+                //intent.setPackage("com.google.android.apps.maps")
+                startActivity(intent)
+            }
+
+        }
     }
 
     private fun showPopupMenu() {
@@ -85,8 +107,10 @@ class ViewPlaceFragment : Fragment() {
             ratingBar.rating = data.getDouble("rate").toFloat()
             reviews.text = data.getString("reviews").toString()
             description.text = data.getString("description").toString()
-            location.text = data.getString("location").toString()
+            location.text = data.getString("address").toString()
             image = data.getString("image").toString()
+            cordinates = data.getString("location").toString()
+            Log.d("testApp",cordinates)
             Glide.with(requireContext()).load(image).into(binding.imageView)
         }
     }

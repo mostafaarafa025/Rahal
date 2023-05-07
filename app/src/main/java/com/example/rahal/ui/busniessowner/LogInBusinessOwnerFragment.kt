@@ -17,6 +17,7 @@ import com.example.rahal.api.UserApi
 import com.example.rahal.data.UserRequest
 import com.example.rahal.data.UserResponse
 import com.example.rahal.databinding.FragmentLogInBusinessOwnerBinding
+import com.example.rahal.module.Retrofit
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

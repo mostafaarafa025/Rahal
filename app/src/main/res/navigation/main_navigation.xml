@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_viewPlaceFragment"
             app:destination="@id/viewPlaceFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/plansFragment"
@@ -37,7 +40,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/FAQFragment"
-        android:name="com.example.rahal.ui.home.faq.FAQFragment"
+        android:name="com.example.rahal.ui.home.FAQFragment"
         android:label="fragment_faq"
         tools:layout="@layout/fragment_faq" >
         <action
@@ -103,4 +106,13 @@
         android:name="com.example.rahal.ui.home.PlanFragment"
         android:label="fragment_plan"
         tools:layout="@layout/fragment_plan" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.rahal.ui.home.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
 </navigation>

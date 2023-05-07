@@ -18,6 +18,7 @@ import com.example.rahal.api.UserApi
 import com.example.rahal.data.RegisterUserRequest
 import com.example.rahal.data.UserResponse
 import com.example.rahal.databinding.FragmentSignUpUserBinding
+import com.example.rahal.module.Retrofit
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback

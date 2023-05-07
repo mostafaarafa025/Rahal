@@ -1,4 +1,4 @@
-package com.example.rahal.ui.home.faq
+package com.example.rahal.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rahal.R
 import com.example.rahal.databinding.FaqItemBinding
+import com.example.rahal.data.faq.FaqItem
 
 class FaqAdapter(private val list:List<FaqItem>): RecyclerView.Adapter<FaqAdapter.ViewHolder>() {
     private var onClickListener: OnClickListener? = null
@@ -18,7 +19,7 @@ class FaqAdapter(private val list:List<FaqItem>): RecyclerView.Adapter<FaqAdapte
         val binding = FaqItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,false)
-        return FaqAdapter.ViewHolder(binding)
+        return ViewHolder(binding)
     }
 
     @SuppressLint("SuspiciousIndentation")

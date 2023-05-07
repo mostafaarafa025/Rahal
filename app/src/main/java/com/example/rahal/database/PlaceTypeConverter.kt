@@ -3,6 +3,8 @@ package com.example.rahal.database
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.example.rahal.data.Location
+import org.json.JSONArray
+import org.json.JSONObject
 
 @TypeConverters
 class PlaceTypeConverter {
@@ -17,6 +19,33 @@ class PlaceTypeConverter {
         return list?.joinToString(",")
     }
 
+
+    @TypeConverter
+    fun fromDatabaseValue(value: String?): Location? {
+        return value?.let { json ->
+            val jsonObject = JSONObject(json)
+            val address = jsonObject.optString("address")
+            val coordinatesJsonArray = jsonObject.optJSONArray("coordinates")
+            val coordinates = mutableListOf<Double>()
+            for (i in 0 until coordinatesJsonArray.length()) {
+                coordinates.add(coordinatesJsonArray.getDouble(i))
+            }
+            val type = jsonObject.optString("type")
+            Location(address, coordinates, type)
+        }
+    }
+
+    @TypeConverter
+    fun toDatabaseValue(location: Location?): String? {
+        return location?.let { location ->
+            val jsonObject = JSONObject()
+            jsonObject.put("address", location.address)
+            val coordinatesJsonArray = JSONArray(location.coordiantes)
+            jsonObject.put("coordinates", coordinatesJsonArray)
+            jsonObject.put("type", location.type)
+            jsonObject.toString()
+        }
+    }
 
 
 }
