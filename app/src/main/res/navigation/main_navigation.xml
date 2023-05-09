@@ -114,5 +114,8 @@
         <action
             android:id="@+id/action_searchFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_viewPlaceFragment"
+            app:destination="@id/viewPlaceFragment" />
     </fragment>
 </navigation>

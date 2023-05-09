@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.SearchView
@@ -32,7 +33,7 @@ class HomePageFragment : Fragment() {
     private lateinit var helpIcon:ImageView
     private lateinit var recommendedViewAll:TextView
     private lateinit var topRatedViewAll:TextView
-    private lateinit var searchBar: SearchView
+    private lateinit var searchBar: EditText
     private lateinit var setCity: TextView
     private val viewModel: ViewModel by viewModels()
     private lateinit var recommendedAdapter : RecommendedTopRatedAdapter

@@ -7,6 +7,8 @@ import com.example.rahal.data.PlaceList
 import com.example.rahal.data.activites.Activities
 import com.example.rahal.data.activites.ActivitiesTypes
 import com.example.rahal.data.activitiesContent.Content
+import com.example.rahal.data.search.Search
+import com.example.rahal.data.search.SearchList
 import com.example.rahal.database.PlaceDataBase
 import com.example.rahal.remove2.List
 import retrofit2.Response
@@ -28,11 +30,21 @@ class Repository @Inject constructor(
         database.delete(place)
     }
 
+    suspend fun getSearch(searchQuery: String): Response<Search>{
+        val response = homeApi.searchForPlaces(searchQuery)
+        if (response.isSuccessful){
+            Log.d("TestApp","Success to connect getSearch() : ${response.body()}")
+        }else {
+            Log.d("TestApp","Failed to connected getSearch(): ${response.code()}")
+        }
+        return response
+    }
+
 
     suspend fun getRecommended(sort: String): Response<PlaceList>{
         val response = homeApi.getAttractions(sort)
         if (response.isSuccessful){
-            Log.d("TestApp","Success to connect getAttractions() repo: ${response.code()}")
+            Log.d("TestApp","Success to connect getAttractions() : ${response.code()}")
         }else {
             Log.d("TestApp","Failed to connected getAttractions(): ${response.code()}")
         }
@@ -42,7 +54,7 @@ class Repository @Inject constructor(
     suspend fun getContentOfActivities(cityName: String,type:String): Response<Content>{
         val response = homeApi.getContentOfActivites(cityName,type)
         if (response.isSuccessful){
-            Log.d("TestApp","Success to connect getContentOfActivities() repo: ${response.body()}")
+            Log.d("TestApp","Success to connect getContentOfActivities() : ${response.code()}")
         }else {
             Log.d("TestApp","Failed to connected getContentOfActivities(): ${response.code()}")
         }
@@ -52,7 +64,7 @@ class Repository @Inject constructor(
     suspend fun getNew(cityName:String,sort: String): Response<List>{
         val response = homeApi.getNew(cityName,sort)
         if (response.isSuccessful){
-            Log.d("TestApp","Success to connect getcites() repo: ${response.body()}")
+            Log.d("TestApp","Success to connect getcites() : ${response.code()}")
         }else {
             Log.d("TestApp","Failed to connected getcites(): ${response.code()}")
         }
@@ -63,7 +75,7 @@ class Repository @Inject constructor(
     suspend fun getTopRated(sort: String): Response<PlaceList>{
         val response = homeApi.getAttractions(sort)
         if (response.isSuccessful){
-            Log.d("TestApp","Success to connect getAttractions() repo: ${response.code()}")
+            Log.d("TestApp","Success to connect getAttractions() : ${response.code()}")
         }else {
             Log.d("TestApp","Failed to connected getAttractions(): ${response.code()}")
         }
@@ -73,7 +85,7 @@ class Repository @Inject constructor(
     suspend fun getActivities(city: String): Response<Activities>{
         val response = homeApi.getActivities(city)
         if (response.isSuccessful){
-            Log.d("TestApp","Success to connect getActivities() repo: ${response.body()}")
+            Log.d("TestApp","Success to connect getActivities() : ${response.code()}")
         }else {
             Log.d("TestApp","Failed to connected getActivities(): ${response.code()}")
         }

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rahal.data.Place
+import com.example.rahal.data.search.City
 import com.example.rahal.remove2.Restaurant
 import com.example.rahal.repositories.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,6 +33,8 @@ class ViewModel @Inject constructor(
     private val _getContentActivitiesMutableLiveData = MutableLiveData<List<Place>>()
     val getContentActivitiesLiveData: LiveData<List<Place>> = _getContentActivitiesMutableLiveData
 
+    private val _getSearchMutableLiveData = MutableLiveData<List<City>>()
+    val getSearchLiveData: LiveData<List<City>> = _getSearchMutableLiveData
     fun getRecommended(){
         viewModelScope.launch {
             try {
@@ -46,6 +49,21 @@ class ViewModel @Inject constructor(
             }
         }
     }
+
+    fun getSearch(searchQuery: String){
+        viewModelScope.launch {
+            try {
+                val response = repository.getSearch(searchQuery)
+
+                response.body()!!.data.cities.let {
+                    _getSearchMutableLiveData.postValue(it)
+                }
+            }catch (t:Throwable){
+
+            }
+        }
+    }
+
 
     fun getContentOfActivities(cityName: String,type: String){
         viewModelScope.launch {

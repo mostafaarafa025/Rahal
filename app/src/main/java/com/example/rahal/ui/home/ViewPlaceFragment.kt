@@ -112,6 +112,9 @@ class ViewPlaceFragment : Fragment() {
             cordinates = data.getString("location").toString()
             Log.d("testApp",cordinates)
             Glide.with(requireContext()).load(image).into(binding.imageView)
+            if (description.text.equals("null") || description.text.equals("")){
+                description.text = "hello"
+            }
         }
     }
 
