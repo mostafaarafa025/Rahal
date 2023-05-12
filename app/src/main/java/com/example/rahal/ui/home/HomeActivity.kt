@@ -33,11 +33,6 @@ class HomeActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
 
-       // val fragment = supportFragmentManager.findFragmentById(R.id.FAQFragment)
-//        if(fragment == null)
-//            fragment?.let { getSupportFragmentManager().beginTransaction().remove(it).commit() };
-
-
     }
 
 }

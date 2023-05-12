@@ -115,7 +115,6 @@ class HomePageFragment : Fragment() {
         viewModel.getActivities("cairo")
         viewModel.getActivitiesLiveData.observe(viewLifecycleOwner, Observer {
             activitiesAdapter.differ.submitList(it)
-            Log.d("testApp","homepage" + it)
         })
     }
     private fun setupActivitiesRecyclerView(){

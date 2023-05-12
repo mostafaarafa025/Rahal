@@ -1,8 +1,10 @@
 package com.example.rahal.ui.home
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -12,6 +14,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
 import com.example.rahal.databinding.FragmentProfileBinding
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +31,7 @@ class ProfileFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
     companion object {
         const val PICK_IMAGE_REQUEST = 1
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,6 +47,8 @@ class ProfileFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
 
      override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
          settingButton.setOnClickListener {
              drawerLayout.openDrawer(navigationView)
@@ -81,6 +87,19 @@ class ProfileFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
             val imageUri = data.data
             // Do something with the imageUri, such as set it to an ImageView or upload it to a server.
             profileImageView.setImageURI(imageUri)
+        }
+    }
+
+    fun getData(){
+        val data = arguments
+        if (data != null){
+            binding.fullNameEditText.hint = data.getString("name").toString()
+            binding.emailEditText.hint = data.getString("email").toString()
+            binding.profileTextView.text = data.getString("email").toString()
+
+            Log.d(TAG, "getData: " + data.getString("name").toString())
+            Log.d(TAG, "getData: " + data.getString("email").toString())
+
         }
     }
 

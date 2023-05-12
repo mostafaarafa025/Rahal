@@ -1,5 +1,6 @@
 package com.example.rahal.ui.user
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -12,12 +13,18 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.rahal.*
+import com.example.rahal.api.HomeApi
 import com.example.rahal.api.UserApi
 import com.example.rahal.data.UserRequest
 import com.example.rahal.data.UserResponse
+import com.example.rahal.databinding.FragmentHomePageBinding
 import com.example.rahal.databinding.FragmentLogInUserBinding
 import com.example.rahal.module.Retrofit
+import com.example.rahal.ui.home.HomeActivity
+import com.example.rahal.ui.home.HomePageFragment
+import com.example.rahal.ui.home.ProfileFragment
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Response
@@ -62,7 +69,11 @@ class LogInUserFragment : Fragment() {
 
         binding.floatingButton.setOnClickListener {
             login()
+            //Navigation.findNavController(view).navigate(R.id.action_logInUserFragment_to_homePageFragment)
             //Navigation.findNavController(view).navigate(R.id.followSignUpUserFragment)
+
+
+
         }
     }
 
@@ -71,14 +82,27 @@ class LogInUserFragment : Fragment() {
         request.email = emailEditText.text.toString().trim()
         request.password = passwordEditText.text.toString().trim()
 
-        val retrofit = Retrofit().getRetrofitClientInstance().create(UserApi::class.java)
+        val retrofit = Retrofit().getRetrofitClientInstance().create(HomeApi::class.java)
         retrofit.login(request).enqueue(object : retrofit2.Callback<UserResponse>{
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 val user = response.body()
                 if (response.code() == 201 && user?.data?.user?.role.toString() == "user") {
-                    Log.e("sucess", user!!.token.toString())
-                    Log.e("sucess", user!!.data?.user?.role.toString())
-                    Toast.makeText(activity,"login sucess", Toast.LENGTH_LONG).show()
+                    Log.e("success", user!!.token.toString())
+                    Log.e("success", user!!.data?.user?.role.toString())
+                    Log.e("success", user!!.data?.user?.name.toString())
+                    Log.e("success", user!!.data?.user?.email.toString())
+
+                    val bundle = Bundle()
+                    bundle.putString("name", user.data?.user?.name)
+                    bundle.putString("email", user.data?.user?.email)
+
+                    val profileFragment = ProfileFragment()
+                    profileFragment.arguments = bundle
+
+
+                    val intent = Intent(activity,HomeActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
                 }else {
                     Toast.makeText(activity,"invalid mail or password",Toast.LENGTH_LONG).show()
                 }
@@ -92,6 +116,7 @@ class LogInUserFragment : Fragment() {
             }
 
         })
+
     }
 
     private fun initializeVariables(){

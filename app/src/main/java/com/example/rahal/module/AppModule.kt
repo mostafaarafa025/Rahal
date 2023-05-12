@@ -17,6 +17,15 @@ import javax.inject.Singleton
 @Module
 object AppModule {
 
+//    @Provides
+//    @Singleton
+//    fun provideApi(): HomeApi =
+//        Retrofit.Builder()
+//            .baseUrl("http://rahalaa-production.up.railway.app/api/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//            .create(HomeApi::class.java)
+
     @Provides
     @Singleton
     fun provideApi(): HomeApi =
@@ -25,7 +34,6 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(HomeApi::class.java)
-
 
     @Provides
     @Singleton

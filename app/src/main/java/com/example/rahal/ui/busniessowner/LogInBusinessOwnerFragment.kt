@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.Navigation
 import com.example.rahal.*
+import com.example.rahal.api.HomeApi
 import com.example.rahal.api.UserApi
 import com.example.rahal.data.UserRequest
 import com.example.rahal.data.UserResponse
@@ -70,7 +71,7 @@ class LogInBusinessOwnerFragment : Fragment() {
         request.email = emailEditText.text.toString().trim()
         request.password = passwordEditText.text.toString().trim()
 
-        val retrofit = Retrofit().getRetrofitClientInstance().create(UserApi::class.java)
+        val retrofit = Retrofit().getRetrofitClientInstance().create(HomeApi::class.java)
         retrofit.login(request).enqueue(object: Callback<UserResponse>{
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 val user = response.body()

@@ -14,6 +14,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.rahal.*
+import com.example.rahal.api.HomeApi
 import com.example.rahal.api.UserApi
 import com.example.rahal.data.RegisterUserRequest
 import com.example.rahal.data.UserResponse
@@ -89,7 +90,7 @@ class SignUpUserFragment : Fragment() {
         response.role = role
 
 
-        val retrofit = Retrofit().getRetrofitClientInstance().create(UserApi::class.java)
+        val retrofit = Retrofit().getRetrofitClientInstance().create(HomeApi::class.java)
         retrofit.signup(response).enqueue(object: Callback<UserResponse>{
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 val user = response.body()

@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.Navigation
 import com.example.rahal.*
+import com.example.rahal.api.HomeApi
 import com.example.rahal.api.UserApi
 import com.example.rahal.data.RegisterUserRequest
 import com.example.rahal.data.UserResponse
@@ -77,7 +78,7 @@ class SignUpBusinessOwnerFragment : Fragment() {
         response.passwordConfirm = verifyPasswordEditText.text.toString().trim()
         response.role = role
 
-        val retrofit = Retrofit().getRetrofitClientInstance().create(UserApi::class.java)
+        val retrofit = Retrofit().getRetrofitClientInstance().create(HomeApi::class.java)
         retrofit.signup(response).enqueue(object: Callback<UserResponse>{
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 val user = response.body()

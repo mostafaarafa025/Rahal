@@ -10,18 +10,5 @@ import retrofit2.http.POST
 
 interface UserApi {
 
-    @POST("users/login")
-    fun login(
-        @Body userRequest: UserRequest
-    ): Call<UserResponse>
 
-    @POST("users/signup")
-    fun signup(
-        @Body registerUserRequest: RegisterUserRequest
-    ): Call<UserResponse>
-
-    @POST("users/forgetpassword")
-    fun forgetpassword(
-        @Body forgetPasswordRequest: ForgetPasswordRequest
-    )
 }
