@@ -42,7 +42,7 @@ class ActivitiesAdapter():RecyclerView.Adapter<ActivitiesAdapter.viewHolder>() {
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val data = differ.currentList[position]
         holder.binding.circleTextView.text = data
-        holder.binding.imageCircleId.setImageResource(R.drawable.cairo)
+        holder.binding.imageCircleId.setImageResource(R.drawable.kfc)
 
         holder.itemView.setOnClickListener {
             onActivityItemClick.invoke(data)

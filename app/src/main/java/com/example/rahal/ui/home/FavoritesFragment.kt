@@ -25,7 +25,7 @@ class FavoritesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentFavoritesBinding.inflate(inflater,container,false)
         return binding.root
@@ -42,8 +42,14 @@ class FavoritesFragment : Fragment() {
 
     private fun getFavorites(){
         setupRecyclerView()
-        viewModel.getFavorites().observe(viewLifecycleOwner, Observer {
-            favoritesAdapter.differ.submitList(it)
+        viewModel.getFavorites().observe(viewLifecycleOwner, Observer { data ->
+            if (data.isEmpty()){
+                showNoFavorites()
+                favoritesAdapter.differ.submitList(null)
+            }else {
+                hideNoFavorites()
+                favoritesAdapter.differ.submitList(data)
+            }
         })
     }
 
@@ -63,10 +69,19 @@ class FavoritesFragment : Fragment() {
 
     private fun setupRecyclerView(){
         favoritesAdapter = FavoritesAdapter()
-        binding.favoritesRecylerView.apply {
+        binding.favoritesRecyclerView.apply {
             layoutManager = GridLayoutManager(context,2, RecyclerView.VERTICAL,false)
             adapter = favoritesAdapter
         }
+    }
+
+    private fun showNoFavorites(){
+        binding.backgroundImageView.visibility = View.VISIBLE
+        binding.resultsTextView.visibility = View.VISIBLE
+    }
+    private fun hideNoFavorites(){
+        binding.backgroundImageView.visibility = View.INVISIBLE
+        binding.resultsTextView.visibility = View.INVISIBLE
     }
 
 }

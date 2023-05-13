@@ -12,6 +12,7 @@
             android:id="@+id/changePasswordUserFragment"/>
 
         <item
+            android:id="@+id/logout"
             android:iconTint="@color/orange"
             android:icon="@drawable/ic_logout"
             android:title="Logout" />

@@ -45,6 +45,7 @@ class RecommendedTopRatedAdapter(): RecyclerView.Adapter<RecommendedTopRatedAdap
     }
 
 
+
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val data = differ.currentList[position]
         Glide.with(holder.itemView).load(data.image).into(holder.binding.imageViewId)

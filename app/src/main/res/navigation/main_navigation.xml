@@ -105,7 +105,11 @@
         android:id="@+id/planFragment"
         android:name="com.example.rahal.ui.home.PlanFragment"
         android:label="fragment_plan"
-        tools:layout="@layout/fragment_plan" />
+        tools:layout="@layout/fragment_plan" >
+        <action
+            android:id="@+id/action_planFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.rahal.ui.home.SearchFragment"
@@ -117,19 +121,5 @@
         <action
             android:id="@+id/action_searchFragment_to_viewPlaceFragment"
             app:destination="@id/viewPlaceFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/landingPageFragment2"
-        android:name="com.example.rahal.ui.LandingPageFragment"
-        android:label="fragment_landing_page"
-        tools:layout="@layout/fragment_landing_page" />
-    <fragment
-        android:id="@+id/splashScreenFragment2"
-        android:name="com.example.rahal.ui.SplashScreenFragment"
-        android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
-        <action
-            android:id="@+id/action_splashScreenFragment2_to_landingPageFragment2"
-            app:destination="@id/landingPageFragment2" />
     </fragment>
 </navigation>

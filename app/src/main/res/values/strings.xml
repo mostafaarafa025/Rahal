@@ -23,4 +23,7 @@
     <string name="recommended">Recommended</string>
     <string name="top_rated_places">Top rated places</string>
     <string name="search">Search...</string>
+    <string name="your_plan">Your Plan</string>
+    <string name="favourites">Favourites</string>
+    <string name="nothing_added_to_favorites_yet">Nothing added to favorites yet!</string>
 </resources>

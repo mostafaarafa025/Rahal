@@ -1,10 +1,11 @@
-package com.example.rahal.ui.home
+package com.example.rahal.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.rahal.ui.home.RecommendedPlansFragment
+import com.example.rahal.ui.home.YourPlansFragment
 
 
 class ViewPagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle) :FragmentStateAdapter(fragmentManager,lifecycle) {

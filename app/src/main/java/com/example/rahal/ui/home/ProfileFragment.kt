@@ -15,7 +15,10 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
+import com.example.rahal.R
 import com.example.rahal.databinding.FragmentProfileBinding
+import com.example.rahal.ui.user.LogInUserFragment
+import com.example.rahal.ui.user.MainActivity
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -77,6 +80,13 @@ class ProfileFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.logout -> {
+                val intent = Intent(activity,MainActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            }
+        }
         return true
     }
 
@@ -90,18 +100,7 @@ class ProfileFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
         }
     }
 
-    fun getData(){
-        val data = arguments
-        if (data != null){
-            binding.fullNameEditText.hint = data.getString("name").toString()
-            binding.emailEditText.hint = data.getString("email").toString()
-            binding.profileTextView.text = data.getString("email").toString()
 
-            Log.d(TAG, "getData: " + data.getString("name").toString())
-            Log.d(TAG, "getData: " + data.getString("email").toString())
-
-        }
-    }
 
 
 }
